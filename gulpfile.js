@@ -15,20 +15,27 @@ var bower = require('gulp-bower');
 var bowerSrc = require('gulp-bower-src');
 var gulpFilter = require('gulp-filter');
 var del = require('del');
+var image = require('gulp-image');
 
 var config = {
-     bowerDir: './dev/js/vendor' 
+     bowerDir: 'dev/js/vendor' 
 }
 
 var bowerFiles = {
-    angular:'./dev/js/vendor/angular/angular.min.js',
+    angular:'dev/js/vendor/angular/angular.min.js',
     angularUiRouter:'./dev/js/vendor/angular-ui-router/release/angular-ui-router.min.js',
-    jquery:'./dev/js/vendor/jquery/dist/jquery.min.js'
+    jquery:'dev/js/vendor/jquery/dist/jquery.min.js'
 }
 
 gulp.task('clean:vendorjs',function(){
     return del([
-        './dist/js/vendor'
+        'dist/js/vendor'
+        ]);
+});
+
+gulp.task('clean:images',function(){
+    return del([
+        'dist/img/'
         ]);
 });
 
@@ -41,7 +48,7 @@ gulp.task('lint', function() {
 
 // Compile Our Sass
 gulp.task('compass', function() {
-  gulp.src('dev/sass/*.scss')
+  gulp.src('dev/sass/**/*.scss')
     .pipe(compass({
       css: 'dev/css',
       sass: 'dev/sass'
@@ -51,13 +58,28 @@ gulp.task('compass', function() {
     .pipe(gulp.dest('dist/css'));
 });
 
-// Build Vendor JS
+// HTML task
+gulp.task('html', function(){
+    gulp.src('dev/*.html')
+        .pipe(gulp.dest('dist'));
+});
 
+// Image task
+gulp.task('image', function () {
+  gulp.src('dev/img/**/*')
+    .pipe(image({
+        mozjpeg: false,
+        zopflipng: false
+    }))
+    .pipe(gulp.dest('dist/img/'));
+});
+
+// Build Vendor JS
 gulp.task('bower', function() {
     return gulp.src([bowerFiles.angular, bowerFiles.angularUiRouter, bowerFiles.jquery])
         .pipe(concat('vendor.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('./dist/js/vendor'));
+        .pipe(gulp.dest('dist/js/vendor'));
 });
 
 // Concatenate & Minify JS
@@ -74,8 +96,10 @@ gulp.task('scripts', function() {
 gulp.task('watch', function() {
     gulp.watch(['bower.json','.bowerrc'],['clean:vendorjs','bower']);
     gulp.watch('dev/js/*.js', ['lint', 'scripts']);
-    gulp.watch('dev/sass/*.scss', ['compass']);
+    gulp.watch('dev/img/**/*', ['clean:images', 'image']);
+    gulp.watch('dev/*.html', ['html']);
+    gulp.watch('dev/sass/**/*.scss', ['compass']);
 });
 
 // Default Task
-gulp.task('default', ['lint', 'compass', 'bower', 'scripts', 'watch']);
+gulp.task('default', ['html', 'image', 'lint', 'compass', 'bower', 'scripts', 'watch']);
