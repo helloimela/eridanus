@@ -39,12 +39,12 @@ gulp.task('clean:images',function(){
         ]);
 });
 
-// Lint Task
-gulp.task('lint', function() {
-    return gulp.src('dev/js/*.js')
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'));
+gulp.task('clean:js',function(){
+    return del([
+        'dist/js/main/**/*.js'
+        ]);
 });
+
 
 // Compile Our Sass
 gulp.task('compass', function() {
@@ -60,7 +60,7 @@ gulp.task('compass', function() {
 
 // HTML task
 gulp.task('html', function(){
-    gulp.src('dev/*.html')
+    gulp.src('dev/**/*.html')
         .pipe(gulp.dest('dist'));
 });
 
@@ -78,26 +78,37 @@ gulp.task('image', function () {
 gulp.task('bower', function() {
     return gulp.src([bowerFiles.angular, bowerFiles.angularUiRouter, bowerFiles.jquery])
         .pipe(concat('vendor.js'))
-        .pipe(uglify())
+        .pipe(uglify({
+            mangle:false
+        }))
         .pipe(gulp.dest('dist/js/vendor'));
+});
+
+// Lint Task
+gulp.task('lint', function() {
+    return gulp.src('dev/js/main/**/*.js')
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'));
 });
 
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
-    return gulp.src('dev/js/*.js')
+    return gulp.src('dev/js/main/**/*.js')
         .pipe(concat('all.js'))
-        .pipe(gulp.dest('dist/js'))
+        .pipe(gulp.dest('dist/js/main/'))
         .pipe(rename('all.min.js'))
-        .pipe(uglify())
-        .pipe(gulp.dest('dist/js'));
+        .pipe(uglify({
+            mangle:false
+        }))
+        .pipe(gulp.dest('dist/js/main/'));
 });
 
 // Watch Files For Changes
 gulp.task('watch', function() {
     gulp.watch(['bower.json','.bowerrc'],['clean:vendorjs','bower']);
-    gulp.watch('dev/js/*.js', ['lint', 'scripts']);
+    gulp.watch('dev/js/main/**/*.js', ['clean:js','lint', 'scripts']);
     gulp.watch('dev/img/**/*', ['clean:images', 'image']);
-    gulp.watch('dev/*.html', ['html']);
+    gulp.watch('dev/**/*.html', ['html']);
     gulp.watch('dev/sass/**/*.scss', ['compass']);
 });
 

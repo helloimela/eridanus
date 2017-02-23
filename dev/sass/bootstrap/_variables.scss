@@ -2,7 +2,7 @@
 // defaults to true if twbs-font-path function is present (no function => twbs-font-path('') parsed as string == right side)
 // in Sass 3.3 this can be improved with: function-exists(twbs-font-path)
 $bootstrap-sass-asset-helper: (twbs-font-path("") != unquote('twbs-font-path("")')) !default;
-@import url('https://fonts.googleapis.com/css?family=Titillium+Web:200,300,400,600,700');
+@import url('https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600,700,800,900');
 //
 // Variables
 // --------------------------------------------------
@@ -18,11 +18,12 @@ $gray:                   lighten(#000, 33.5%) !default; // #555
 $gray-light:             lighten(#000, 60%) !default;   // #999
 $gray-lighter:           lighten(#000, 93.5%) !default; // #eee
 
-$brand-primary:         #DA667B !default;
+$brand-primary:         #000 !default;
 $brand-success:         #5cb85c !default;
 $brand-info:            #5bc0de !default;
 $brand-warning:         #f0ad4e !default;
 $brand-danger:          #d9534f !default;
+$brand-onblack:         #fff !default;
 
 
 //== Scaffolding
@@ -30,7 +31,7 @@ $brand-danger:          #d9534f !default;
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-$body-bg:               #fff !default;
+$body-bg:               #000 !default;
 //** Global text color on `<body>`.
 $text-color:            $gray-dark !default;
 
@@ -44,7 +45,7 @@ $link-hover-color:      darken($link-color, 15%) !default;
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-$font-family-sans-serif:  "Titillium Web","Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family-sans-serif:  "Raleway","Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $font-family-serif:       Georgia, "Times New Roman", Times, serif !default;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
@@ -77,6 +78,8 @@ $font-extra-light:			200;
 $font-light:				300;
 $font-regular:				400;
 $font-medium:				500;
+$font-semi-bold:			600;
+$font-bold:					700;
 
 
 //== Iconography

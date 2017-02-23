@@ -49,6 +49,8 @@
 @import "bootstrap/utilities";
 @import "bootstrap/responsive-utilities";
 
+@import "compass/css3";
+
 
 .text-thin{
 	font-weight: $font-thin;
@@ -61,3 +63,54 @@
 }
 
 .fc-primary{color: $brand-primary;}
+
+
+html,body{
+	height: 100%;
+}
+
+// Home Page bg color
+.page-bg{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: -1;
+	left: 0;
+	top: 0;
+	background-color: $brand-primary;
+}
+.home-wrapper{
+	position: relative;
+	width: 100%;
+	float: left;
+	top:50%;
+	@include transform(translateY(50%));
+}
+.logo{
+	text-align: right;
+	svg{height: 300px;width: 138px;}
+	path,polygon{
+		fill:#fff;
+	}
+}
+.hero-text{
+	color: $gray-lighter;
+	height: 244px;
+	p{
+		position: relative;
+		top:50%;
+		@include transform(translateY(-50%));
+		font-size: 1.5em;
+		line-height: 1.8em;
+		font-weight: $font-extra-light;
+	}
+}
+.scroll-down{
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	bottom: 10%;
+	left: 50%;
+	@include transform(translateY(-50%));
+	cursor:pointer;
+}
