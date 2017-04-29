@@ -52,6 +52,8 @@
 @import "compass/css3";
 
 
+$ptitems : 7;
+
 .text-thin{
 	font-weight: $font-thin;
 }
@@ -61,12 +63,14 @@
 .text-medium{
 	font-weight: $font-medium;
 }
-
+.fw-light{font-weight: 300;}
+.lh-15{line-height: 1.5em;}
 .fc-primary{color: $brand-primary;}
 
 
-html,body{
+html,body, body>div, .container{
 	height: 100%;
+	overflow: hidden;
 }
 
 // Home Page bg color
@@ -77,40 +81,256 @@ html,body{
 	z-index: -1;
 	left: 0;
 	top: 0;
-	background-color: $brand-primary;
+	// background-color: $brand-primary;
 }
 .home-wrapper{
 	position: relative;
 	width: 100%;
 	float: left;
-	top:50%;
-	@include transform(translateY(50%));
+	height: 100%;
 }
 .logo{
 	text-align: right;
-	svg{height: 300px;width: 138px;}
-	path,polygon{
-		fill:#fff;
-	}
-}
-.hero-text{
-	color: $gray-lighter;
-	height: 244px;
-	p{
-		position: relative;
-		top:50%;
-		@include transform(translateY(-50%));
-		font-size: 1.5em;
-		line-height: 1.8em;
-		font-weight: $font-extra-light;
-	}
-}
-.scroll-down{
-	width: 20px;
-	height: 20px;
-	position: absolute;
-	bottom: 10%;
-	left: 50%;
+	position: fixed;
+	left: 15%;
+	top: 50%;
 	@include transform(translateY(-50%));
-	cursor:pointer;
+	svg{overflow: hidden;}
+	#ela-logo{fill:#fff;}
+}
+#image-cover image{
+	@include transition(1s transform);
+	@include transform(rotate(0deg) scale(1));
+	@include transform-origin(50%,50%,0);
+	animation : logoAnim 10s infinite;
+}
+#ellipse-mask{
+	fill:#FF7BAC;
+	opacity: 0.4;
+	@include transition(all 0.5s);
+	@include transform(scale(0));
+	@include transform-origin(50%,50%,0);
+}
+.logo:hover{
+	#ellipse-mask{
+		@include transform(scale(1));
+	}
+}
+
+.pt-list{
+		position: relative;
+		margin-top: 30%;
+		@include transform(translateY(-50%));
+	li a{
+		display: block;
+		float: left;
+		width: 100%;
+		max-width: 200px;
+		height: 150px;
+		color: #fff;
+		margin-right: 5px;
+		margin-bottom: 5px;
+		background: $brand-primary;
+		padding: 15px;
+		position: relative;
+		font-size: 1.2em;
+		opacity: 0;
+		@include transition(all 0.2s);
+		.title{
+			position: relative;
+			padding: 5px;
+			background: $brand-primary;
+			display: inline-block;
+		}
+		.border{
+			display: block;
+			position: absolute;
+			top: 5px;
+			left: 5px;
+			width: 0;
+			height: 0;
+			border:0px solid #fff;
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			opacity: 1;
+			@include transition(all 0.2s);
+		}
+		&:hover{
+			.border{border:1px solid #fff;width: 190px;height: 140px}
+		}
+	}
+}
+@for $i from 1 to $ptitems{
+	.pt-list li:nth-child(#{$i}){
+		background: lighten($brand-primary,$i+3%);
+		a{animation-delay:$i * 0.1s;}
+	}
+}
+
+.menu{
+	position: fixed;
+	top: 50%;
+	@include transform(translateY(-50%));
+	right: 50px;
+	cursor: pointer;
+	.mline{
+		width: 50px;
+		height: 1px;
+		background: #444;
+		margin-bottom: 10px;
+		display: block;
+		@include transition(all 0.2s);
+		@include transform(rotate(0deg));
+		&.short{width: 40px;margin-left: 5px;}
+	}
+	&.close{
+		.mline.one{
+			@include transform(rotate(45deg));
+		}
+		.mline.two{
+			@include transform(rotate(-45deg));
+			margin-left: 0px;
+			margin-top: -21px;
+		}
+		.mline.short{opacity: 0;}
+	}
+}
+
+.pp{
+	width: 100%;
+	img{width: 100%;}
+}
+.about-box{
+	max-width: 800px;
+	float: left;
+	padding: 30px 20px;
+	@include transition(all 0.5s);
+	animation: borderColor 2.5s alternate infinite;
+	border-width: 1px;
+	border-style: solid;
+	margin-top: 70px;
+}
+
+// .pt-anim{background: #fff;}
+.view,.pt-list{transition:0.5s linear all;}
+.view.ng-animate{
+	position: absolute;
+	top:0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+.view.ng-enter{
+	animation:slideInUp 0.5s both ease-in;
+}
+.view.ng-leave{
+	animation:slideOutLeft 0.5s both ease-in;
+}
+.home-anim .pt-list li a{
+	animation-name:fadeInBox;
+	animation-duration:.5s;
+	animation-timing-function:ease-out;
+	animation-fill-mode:forwards;
+}
+.about-anim.view.ng-animate{
+	left: auto;
+}
+.pt-anim-ctr.ng-enter{
+	// animation-delay:2s;
+}
+
+// bg animation
+.poly-anim line {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  opacity: 0.4;
+  @include transition(stroke 0.3s);
+  animation: dash 0.3s linear forwards, colors 2s alternate infinite;
+}
+
+@for $i from 1 to 31{
+	.poly-anim line:nth-child(#{$i}){
+		animation-delay:$i * 0.3s;
+	}
+}
+
+@keyframes dash {
+  from {
+  	opacity: 0.4;
+    stroke-dashoffset: 600;
+  }
+  to {
+  	opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes colors {
+  0% {
+    stroke:#f7de10;
+  }
+  50%{
+  	stroke:#43a047;
+  }
+  100% {
+    stroke:#f14;
+  }
+}
+@keyframes borderColor {
+  0% {
+    border-color:#f7de10;
+  }
+  50%{
+  	border-color:#43a047;
+  }
+  100% {
+    border-color:#f14;
+  }
+}
+@keyframes logoAnim{
+	0%{
+		@include transform(rotate(0deg) scale(1));
+	}
+	20%{
+		@include transform(rotate(360deg) scale(2));
+	}
+	40%{
+		@include transform(scale(1));
+		opacity: 1;
+	}
+	42%{opacity: 0;}
+	44%{opacity: 1;}
+	46%{opacity: 0;}
+	48%{opacity: 1;}
+	50%{opacity: 0;}
+	52%{opacity: 1;}
+	54%{opacity: 0;}
+	56%{
+		@include transform(rotate(360deg) scale(1));
+		opacity: 1;
+	}
+	60%{@include transform(rotate(0deg) scale(1));}
+	80%{
+		@include transform(scale(-1));
+	}
+	100%{
+		@include transform(scale(1));	
+	}
+}
+
+@keyframes slideInUp {
+	from 	{ transform:translateY(100%); opacity: 0;}
+	to 		{ transform: translateY(0); opacity: 1;}
+}
+@keyframes slideOutLeft {
+	from	{opacity: 1;}
+	to 		{ transform: translateX(-100%); opacity: 0;}
+}
+@keyframes fadeInBox{
+	0%{@include transform(translateY(200px));opacity: 0;}
+	100%{@include transform(translateY(0px));opacity: 1;}
+}
+@keyframes fadeOutBox{
+	0%{@include transform(translateY(0px));opacity: 1;}
+	100%{@include transform(translateY(-200px));opacity: 0;}
 }

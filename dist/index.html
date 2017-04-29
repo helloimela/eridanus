@@ -9,6 +9,7 @@
 
     <!-- Bootstrap -->
     <link href="css/style.min.css" rel="stylesheet">
+    <base href="dist" />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -22,8 +23,8 @@
     <div ng-app="eridanus" ng-controller="MainCtrl">
       <div class="container">
           <!-- <div ng-include='"templates/header.html"'></div> -->
-          <div ng-view>
-          </div>
+          <ng-view class="view {{pageClass}}"></ng-view>
+          <nav></nav>
           <!-- <div ng-include='"templates/footer.html"'></div> -->
         </div>
     </div>
@@ -31,6 +32,7 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-animate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-route.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <!-- <script src="js/vendor/vendor.js"></script> -->
