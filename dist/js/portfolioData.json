@@ -14,7 +14,7 @@
 	{
 		"id":1,
 		"title":"Door Buster!",
-		"desc": "Application to manage job applications. Built over Angular 2 and Firebase, this dynamic web application is the perfect tool to organise all your job applications. <a href=\"https://baldassarrefe.github.io/door-buster/\" target=\"_blank\"><\/a>",
+		"desc": "Application to manage job applications. Built over Angular 2 and Firebase, this dynamic web application is the perfect tool to organise all your job applications. <a href=\"https://baldassarrefe.github.io/door-buster/\" target=\"_blank\">See the demo here<\/a>",
 		"tags":"Website, HCI, Angular 2",
 		"img":"img/thumbs/doorbuster.jpg",
 		"course":"Interaction Programming and Dynamic Web",

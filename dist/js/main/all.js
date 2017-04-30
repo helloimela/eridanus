@@ -1,5 +1,5 @@
 var app = angular.module('eridanus', [
-  'ngRoute', 'ngAnimate'
+  'ngRoute', 'ngAnimate', 'ngSanitize'
 ]);
 
 app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
@@ -16,28 +16,45 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     });
 }]);
 
-app.controller('MainCtrl', ['$http','$scope','$location','$rootScope',function($http, $scope, $location, $rootScope){
+app.controller('MainCtrl', ['$sce','$http','$scope','$location','$rootScope',function($sce,$http, $scope, $location, $rootScope){
 	$scope.go = function ( path ) {
 	  $location.path( path );
 	};
   $rootScope.$on('$routeChangeStart', function(event, currRoute, prevRoute){
     $rootScope.animation = currRoute.animation;
   });
+  $scope.$sce = $sce;
+  $scope.menuClick = function(){
+    $scope.currPath = $location.$$path;
+    if($scope.currPath==='/about'){
+      window.history.back();
+      $scope.menuState='';
+    } else{
+      $location.path('/about/');
+      $scope.menuState = 'close';
+    } 
+  }
 
 }]);
 
-app.controller('HomeCtrl', ['$http','$scope',function($http, $scope, $rootScope){
+app.controller('HomeCtrl', ['$http','$location','$scope',function($http, $location, $scope, $rootScope){
 	$http.get('/dist/js/portfolioData.json').then(function(data){
       $scope.items = data.data;
-      // $scope.bindHTML = $sce.trustAsHtml($scope.items);
   });
   $scope.pageClass = 'home-anim';
 
+  $scope.ptclick = function(pttarget){
+     // $location.path('/portfolio/'+pttarget);
+     // $scope.showModal=true;
+     // $scope.paramdata = pttarget;
+     $scope.activeMenu = pttarget.id;
+     $scope.pageStat='pageFade';
+     $location.path('/portfolio/'+pttarget.id);
+  };
 }]);
 
 app.controller('AboutCtrl', ['$http','$scope',function($http, $scope, $rootScope){
   $scope.pageClass = 'about-anim';
-
 }]);
 
 app.controller('PortItemCtrl', ['$scope','$http','$routeParams',function ($scope, $http, $routeParams ) {
@@ -51,49 +68,26 @@ app.controller('PortItemCtrl', ['$scope','$http','$routeParams',function ($scope
     $scope.pageClass='pt-anim-ctr';
 }]);
 
-app.directive('itemPortfolio', ['$location', function($location){
-  return{
-    restrict : 'E',
-    scope : {
-      item : '='
-    },
-    transclude: true,
-    templateUrl:'partials/portfolioItem.html',
-    link : function(scope, element, attrs){
-      element.on('click', function() {
-            scope.$apply(function() {
-                $location.path('/portfolio/'+scope.item.id);
-            });
-      });
-    }
-  };
-}]);
-
 app.directive('pageBg', [function(){
   return{
     templateUrl:'partials/pageBg.html'
+  };
+}]);
+app.directive('pageBgpt', [function(){
+  return{
+    templateUrl:'partials/pageBgpt.html'
+  };
+}]);
+
+app.directive('logo', [function(){
+  return{
+    templateUrl:'partials/logo.html'
   };
 }]);
 
 app.directive('nav', ['$location',function($location){
   return{
     restrict : 'E',
-    templateUrl:'partials/nav.html',
-    link:function(scope,element){
-      element.on('click', function() {
-        scope.currPath = $location.$$path;
-        if(scope.currPath==='/about'){
-          scope.$apply(function() {
-            window.history.back();
-          });
-          scope.menuState='';
-        } else{
-          scope.$apply(function() {
-            $location.path('/about/');
-          });
-          scope.menuState = 'close';
-        } 
-      });
-    }
+    templateUrl:'partials/nav.html'
   };
 }]);

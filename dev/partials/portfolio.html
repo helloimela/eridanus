@@ -1,36 +1,37 @@
-<div class="pt-anim row" >
-	<div class="col-sm-3 col-sm-offset-9">
-		<a class="back-link pull-right" ng-click="$back()">Back</a>
+<page-bgpt></page-bgpt>
+<div class="pt-big-wp row">
+	<div class="col-sm-offset-2 col-sm-8 bg-white">
+		<div class="col-sm-3 col-sm-offset-9">
+			<a class="back-link pull-right" ng-click="$back()">Back</a>
+		</div>
+		<div class="col-sm-12">
+			<h3>{{ itemDetail.title }}</h3> 
+		</div>
+		<div class="col-md-6 col-sm-12">
+			<p ng-bind-html="$sce.trustAsHtml(itemDetail.desc)"></p>
+		</div>
+	    <div class="col-md-6 col-sm-12">
+	    	<ul class="portfolio-detail">
+				<li>
+					<span class="fc-primary">Course / Company </span> <span>{{itemDetail.course}}</span>
+				</li>
+				<li>
+					<span class="fc-primary">Year </span> <span>{{itemDetail.year}}</span>
+				</li>
+				<li>
+					<span class="fc-primary">Tools </span> <span>{{itemDetail.tools}}</span>
+				</li>
+				<li>
+					<span class="fc-primary">Team </span> <span>{{itemDetail.team}}</span>
+				</li>
+				<li>
+					<span class="fc-primary">Role </span> <span>{{itemDetail.role}}</span>
+				</li>
+	    	</ul>
+	    </div>
+	    <div class="col-sm-12">
+	    	<img ng-src="{{itemDetail.img}}">
+	    </div>
 	</div>
-    <div class="col-sm-12 record" ng-animate-ref="{{ itemDetail.id }}">
-      <h3>{{ itemDetail.title }}</h3>  
-    </div>
-    <div class="col-sm-12">
-    	<p>{{itemDetail.desc}}</p>
-    </div>
-
-    <div class="col-md-4">
-    	<ul class="portfolio-detail">
-			<li>
-				<span class="fc-primary">Course / Company </span> <span>{{itemDetail.course}}</span>
-			</li>
-			<li>
-				<span class="fc-primary">Year </span> <span>{{itemDetail.year}}</span>
-			</li>
-			<li>
-				<span class="fc-primary">Tools </span> <span>{{itemDetail.tools}}</span>
-			</li>
-			<li>
-				<span class="fc-primary">Team </span> <span>{{itemDetail.team}}</span>
-			</li>
-			<li>
-				<span class="fc-primary">Role </span> <span>{{itemDetail.role}}</span>
-			</li>
-    	</ul>
-    </div>
-
-    <div class="col-md-8">
-    	<!-- <div class="portfolio-image" style="background-image:url('{{itemDetail.img}}')"></div> -->
-    </div>
 
 </div>

@@ -6601,6 +6601,11 @@ button.close {
 html, body, body > div, .container {
   height: 100%;
   overflow: hidden;
+  color: #333333;
+}
+
+a {
+  cursor: pointer;
 }
 
 .page-bg {
@@ -6610,6 +6615,9 @@ html, body, body > div, .container {
   z-index: -1;
   left: 0;
   top: 0;
+}
+.page-bg.right {
+  left: 80%;
 }
 
 .home-wrapper {
@@ -6676,7 +6684,7 @@ html, body, body > div, .container {
 
 .pt-list {
   position: relative;
-  margin-top: 30%;
+  margin-top: 10px;
   -moz-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
@@ -6730,6 +6738,48 @@ html, body, body > div, .container {
   height: 140px;
 }
 
+.pt-big-wp {
+  position: fixed;
+  transform: translate(-50%, 0);
+  left: 50%;
+  width: 103%;
+  height: 100%;
+  background: rgba(255, 155, 168, 0.12);
+  -moz-transition: all 0.1s;
+  -o-transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+}
+.pt-big-wp > div {
+  overflow-y: auto;
+  position: relative;
+  height: 100%;
+  padding-bottom: 40px;
+}
+
+a.back-link {
+  padding: 5px 20px 8px;
+  background: #bd2d40;
+  color: #fff;
+  margin: 20px 0 0;
+}
+
+.bg-white {
+  background: #fff;
+}
+
+@keyframes ptitem {
+  0% {
+    -moz-transform: translate(0);
+    -ms-transform: translate(0);
+    -webkit-transform: translate(0);
+    transform: translate(0);
+  }
+  100% {
+    top: 0;
+    left: 0;
+  }
+}
 .pt-list li:nth-child(1) {
   background: #cd3146;
 }
@@ -6772,6 +6822,25 @@ html, body, body > div, .container {
   animation-delay: 0.6s;
 }
 
+.socmed {
+  margin-top: 20px;
+  padding-left: 0;
+}
+.socmed li {
+  display: inline-block;
+  margin-right: 10px;
+}
+.socmed li a {
+  display: block;
+  width: 30px;
+}
+.socmed li a img {
+  width: 100%;
+}
+.socmed li a:hover {
+  opacity: 0.8;
+}
+
 .menu {
   position: fixed;
   top: 50%;
@@ -6781,6 +6850,8 @@ html, body, body > div, .container {
   transform: translateY(-50%);
   right: 50px;
   cursor: pointer;
+  width: 60px;
+  height: 60px;
 }
 .menu .mline {
   width: 50px;
@@ -6798,8 +6869,12 @@ html, body, body > div, .container {
   transform: rotate(0deg);
 }
 .menu .mline.short {
-  width: 40px;
-  margin-left: 5px;
+  width: 30px;
+  margin-left: 10px;
+}
+.menu.close {
+  color: #000;
+  opacity: 0.8;
 }
 .menu.close .mline.one {
   -moz-transform: rotate(45deg);
@@ -6852,23 +6927,41 @@ html, body, body > div, .container {
   overflow: hidden;
 }
 
-.view.ng-enter {
-  animation: slideInUp 0.5s both ease-in;
-}
-
-.view.ng-leave {
-  animation: slideOutLeft 0.5s both ease-in;
-}
-
 .home-anim .pt-list li a {
   animation-name: fadeInBox;
   animation-duration: .5s;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
 }
+.home-anim.view.ng-enter {
+  animation: slideInUp 0.5s both ease-in;
+}
+.home-anim.view.ng-leave {
+  animation: slideOutDown 0.5s both ease-out;
+}
 
+.about-anim.view.ng-leave {
+  animation: slideOutLeft 0.5s both ease-in;
+}
+.about-anim.view.ng-enter {
+  animation: slideInRight 0.5s both ease-in;
+}
 .about-anim.view.ng-animate {
   left: auto;
+}
+
+.pt-anim-ctr.view.ng-enter .pt-big-wp {
+  animation: slideInDownPT 0.5s both ease-in;
+}
+.pt-anim-ctr.view.ng-leave .pt-big-wp {
+  animation: slideOutDownPT 0.5s both ease-out;
+}
+.pt-anim-ctr.view.ng-leave .page-bg {
+  opacity: 0;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
 }
 
 .poly-anim line {
@@ -7101,6 +7194,22 @@ html, body, body > div, .container {
     transform: scale(1);
   }
 }
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
 @keyframes slideInUp {
   from {
     transform: translateY(100%);
@@ -7111,6 +7220,26 @@ html, body, body > div, .container {
     opacity: 1;
   }
 }
+@keyframes slideInDownPT {
+  from {
+    transform: translate(-50%, -100%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+@keyframes slideOutDownPT {
+  from {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, -100%);
+    opacity: 0;
+  }
+}
 @keyframes slideOutLeft {
   from {
     opacity: 1;
@@ -7118,6 +7247,31 @@ html, body, body > div, .container {
   to {
     transform: translateX(-100%);
     opacity: 0;
+  }
+}
+@keyframes slideOutDown {
+  from {
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    -moz-transform: translateX(20%);
+    -ms-transform: translateX(20%);
+    -webkit-transform: translateX(20%);
+    transform: translateX(20%);
+  }
+  to {
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+    opacity: 1;
   }
 }
 @keyframes fadeInBox {
@@ -7137,18 +7291,18 @@ html, body, body > div, .container {
   }
 }
 @keyframes fadeOutBox {
-  0% {
-    -moz-transform: translateY(0px);
-    -ms-transform: translateY(0px);
-    -webkit-transform: translateY(0px);
-    transform: translateY(0px);
+  from {
     opacity: 1;
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
   }
-  100% {
-    -moz-transform: translateY(-200px);
-    -ms-transform: translateY(-200px);
-    -webkit-transform: translateY(-200px);
-    transform: translateY(-200px);
+  to {
     opacity: 0;
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -webkit-transform: scale(0);
+    transform: scale(0);
   }
 }
