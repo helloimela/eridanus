@@ -6600,7 +6600,7 @@ button.close {
 
 html, body, body > div, .container {
   height: 100%;
-  overflow: hidden;
+  overflow: auto;
   color: #333333;
   position: relative;
 }
@@ -6628,27 +6628,28 @@ a {
 }
 
 .home-wrapper {
-  position: relative;
-  width: 100%;
-  float: left;
-  height: 100%;
+  margin-top: 100px;
 }
 
 .logo {
-  text-align: right;
-  position: fixed;
-  left: 15%;
-  top: 50%;
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
+  position: relative;
 }
 .logo svg {
   overflow: hidden;
+  -moz-transform: scale(0.5);
+  -ms-transform: scale(0.5);
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
 }
 .logo #ela-logo {
   fill: #fff;
+}
+
+.logo-new {
+  width: 100%;
+}
+.logo-new img {
+  width: 200px;
 }
 
 #image-cover, #ellipse-mask {
@@ -6763,12 +6764,17 @@ a {
   .pt-big-wp {
     margin-top: 60px;
   }
-  .pt-big-wp .pt-title {
+  .pt-big-wp .pt-title h3 {
     margin-top: 0px;
   }
   .pt-big-wp .back-link-wp {
     text-align: left;
   }
+}
+
+.portfolio-images li img {
+  width: 100%;
+  margin-top: 20px;
 }
 
 a.back-link {
@@ -6835,6 +6841,13 @@ a.back-link {
 }
 .pt-list li:nth-child(6) a {
   animation-delay: 0.6s;
+}
+
+.pt-list li:nth-child(7) {
+  background: #d4495c;
+}
+.pt-list li:nth-child(7) a {
+  animation-delay: 0.7s;
 }
 
 .socmed {

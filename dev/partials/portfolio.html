@@ -4,13 +4,10 @@
 		<div class="col-sm-12 back-link-wp">
 			<a class="back-link" ng-click="$back()">Back</a>
 		</div>
-		<div class="pt-title col-sm-12">
-			<h3>{{ itemDetail.title }}</h3> 
-		</div>
-		<div class="col-md-6 col-sm-12">
-			<p ng-bind-html="$sce.trustAsHtml(itemDetail.desc)"></p>
-		</div>
-	    <div class="col-md-6 col-sm-12">
+		<div class="col-xs-12 col-sm-6">
+			<div class="pt-title">
+				<h3>{{ itemDetail.title }}</h3>
+			</div>
 	    	<ul class="portfolio-detail">
 				<li>
 					<span class="fc-primary">Course / Company </span> <span>{{itemDetail.course}}</span>
@@ -28,10 +25,15 @@
 					<span class="fc-primary">Role </span> <span>{{itemDetail.role}}</span>
 				</li>
 	    	</ul>
-	    </div>
-	    <div class="col-sm-12">
-	    	<img ng-src="{{itemDetail.img}}">
-	    </div>
+	    	<div ng-bind-html="$sce.trustAsHtml(itemDetail.desc)"></div>
+		</div>
+		<div class="col-xs-12 col-sm-6">
+	    	<ul class="portfolio-images">
+	    		<li ng-repeat="im in itemDetail.img">
+	    			<img ng-src="{{im}}">
+	    		</li>
+	    	</ul>
+		</div>
 	</div>
 
 </div>

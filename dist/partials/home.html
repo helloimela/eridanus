@@ -1,21 +1,31 @@
 <page-bg></page-bg>
-<div class="home-wrapper" class="col-sm-offset-2 col-sm-8 col-lg-offset-3 col-lg-6" ng-class="pageStat">
-	<logo></logo>	
-	<div class="col-sm-offset-4 col-sm-7">
-		<div class="intro">
-			<h1>Innovation.</h1>
-			<h1>Interactive.</h1>
-			<h1>Impact.</h1>
-			<p>Showcases of my passion in interaction design and frontend web development.</p>
-		</div>
-		<ul class="pt-list">
-			<li ng-repeat="item in items" ng-class="{activeAnim : activeMenu === item.id}">
-				<a href="" class="pt-anim" ng-click="ptclick(item)">
-					<span class="border" style="background-image: url({{item.img}})"></span>
-					<span class="title">{{item.title}}</span>
-				</a>
-			</li>
-		</ul>
+
+<div class="home-wrapper col-xs-12 col-sm-offset-1 col-sm-4">
+	<!-- <logo></logo> -->
+	<div class="logo-new"><img src="img/logo/ela-logoe.png"></div>
+	<div class="intro">
+		<h1>Innovation.</h1>
+		<h1>Interactive.</h1>
+		<h1>Impact.</h1>
+		<p>Showcases of my passion in interaction design and frontend web development.</p>
 	</div>
-<!-- endOf home-wrapper -->
 </div>
+<div class="home-wrapper col-xs-12 col-sm-7">
+	<ul class="pt-list">
+		<li ng-repeat="item in items" ng-class="{activeAnim : activeMenu === item.id}">
+			<a href="" class="pt-anim" ng-click="ptclick(item)">
+				<span class="border" style="background-image: url({{item.img}})"></span>
+				<span class="title">{{item.title}}</span>
+			</a>
+		</li>
+	</ul>
+</div>
+
+<!-- <div class="home-wrapper" class="col-sm-offset-2 col-sm-8 col-lg-offset-3 col-lg-6" ng-class="pageStat">
+		
+	<div class="col-sm-offset-4 col-sm-7">
+		
+		
+	</div> -->
+<!-- endOf home-wrapper -->
+<!-- </div> -->

@@ -1,6 +1,18 @@
 [
 	{
-		"id":0,
+		"id":6,
+		"title":"Droplet",
+		"desc": "The journey started with discovering a new perspective of PET bottles.PET bottles can be used to store and transport a multitude of things, fluids being maybe the most popular choice. There are limits to the amount of temperature and pressure your bottle can handle, but apart from that, use your imagination! <p>We explored the intended use and redefined the meaning of PET bottles by creating a mindmap and observing interaction around PET bottles. The experience of discovering a new perspective of PET bottles was translated into several sketches and ideas.<\/p><p>There is one interesting characteristic of PET bottles which is the design of the bottle neck which can be attached to a cap with specific thread design. At the same time, we found that there were several inventions around plastic bottles which involved a water filter technology. The intersection of those two inspired us to misuse PET bottle by creating a detachable item which can be easily used as a water filter. A design workshop helped us imagine the possible design of the product. It also helped in the exploration of designing the interactive technology feature.<\/p><p>Creating a prototype was conducted as a proof of concept of the design. A 3D design was made and a 3D model of the cap design was printed.<\/p>",
+		"tags":"Product, Interaction Design",
+		"img":"img/thumbs/kth-social-redesign.png",
+		"course":"Interaction Design as a Reflective Practice",
+		"year":"Spring 2017",
+		"tools":"Sketch, InVision, Adobe Photoshop, Filmora",
+		"team":"Adrian Benigno Latupeirissa, Ela Yudhanira, Edvard Ahlsén",
+		"role":"Design interaction and project planning"
+	},
+	{
+		"id":5,
 		"title":"KTH Social Redesign",
 		"desc": "Redesign concept for KTH course management system, KTH Social. This project is the part of Interaction Design Methods. In this project, we applied methods and theories in Interaction Design.",
 		"tags":"Website, HCI",
@@ -12,7 +24,7 @@
 		"role":"Design interaction and project planning"
 	},
 	{
-		"id":1,
+		"id":4,
 		"title":"Door Buster!",
 		"desc": "Application to manage job applications. Built over Angular 2 and Firebase, this dynamic web application is the perfect tool to organise all your job applications. <a href=\"https://baldassarrefe.github.io/door-buster/\" target=\"_blank\">See the demo here<\/a>",
 		"tags":"Website, HCI, Angular 2",
@@ -24,7 +36,7 @@
 		"role":"Programmer"
 	},
 	{
-		"id":2,
+		"id":3,
 		"title":"Urban Perception in Virtual Urban Walk-Through",
 		"desc":"Color plays a significant role in our perception about the city. A virtual neighborhood made in Unity3D was used as a tool to help us understand how colors of the buildings affect urban perception. We measured the aspects that affect human perception of a safety neighborhood.",
 		"tags":"Unity3D, HCI",
@@ -36,7 +48,7 @@
 		"role":"Focus on the research design, research method, conduct observation, generate report"
 	},
 	{
-		"id":3,
+		"id":2,
 		"title":"Usability Testing on Canvas Mobile and Desktop",
 		"desc":"Compare the usability between Canvas mobile and desktop. The method used were pre-study, observation in the usability Lab using Morae Usability Software, qualitative research, and surveys (SUMI analysis).",
 		"tags":"UX, HCI, Usability",
@@ -48,7 +60,7 @@
 		"role":"Prepare usability test materials, conduct observation & usability test, analyse data with Morae and SPSS"
 	},
 	{
-		"id":4,
+		"id":1,
 		"title":"Human Tetris Game",
 		"desc": "Human Tetris is a popular game in Japan which already adapted in many countries. It requires the contestants to fit through the hole in the wall. To develop this game in the form of virtual reality will create an attractive multimodal experience. Users need to move their body to match with the hole that they see and at the same time feels the wall coming closer with the existence of 3D sound effects.",
 		"tags":"Game, HCI",
@@ -60,7 +72,7 @@
 		"role":"Design game environment and interfaces in Unity3D"
 	},
 	{
-		"id":5,
+		"id":0,
 		"title":"Qajoo Website Frontend Development",
 		"desc": "Website development using AngularJS for Qajoo Studio (qajoo.com) in 2015. The development involved teamwork with 2D artist and product manager.",
 		"tags":"Frontend, AngularJS",

@@ -52,7 +52,7 @@
 @import "compass/css3";
 
 
-$ptitems : 7;
+$ptitems : 8;
 
 .text-thin{
 	font-weight: $font-thin;
@@ -70,7 +70,7 @@ $ptitems : 7;
 
 html,body, body>div, .container{
 	height: 100%;
-	overflow: hidden;
+	overflow: auto;
 	color: $gray-dark;
 	position: relative;
 }
@@ -94,19 +94,19 @@ a{cursor: pointer;}
 	}
 }
 .home-wrapper{
-	position: relative;
-	width: 100%;
-	float: left;
-	height: 100%;
+	margin-top: 100px;
 }
 .logo{
-	text-align: right;
-	position: fixed;
-	left: 15%;
-	top: 50%;
-	@include transform(translateY(-50%));
-	svg{overflow: hidden;}
+	position: relative;
+	svg{
+		overflow: hidden;
+		@include transform(scale(0.5));
+	}
 	#ela-logo{fill:#fff;}
+}
+.logo-new{
+	width: 100%;
+	img{width: 200px;}
 }
 #image-cover, #ellipse-mask{
 	clip-path: url(#ela-logo);
@@ -187,9 +187,15 @@ a{cursor: pointer;}
     .back-link-wp{text-align: right;}
     @media (max-width: $screen-sm-min) {
         margin-top:60px;
-        .pt-title{margin-top:0px;}
+        .pt-title h3{margin-top:0px;}
         .back-link-wp{text-align: left;}
       }
+}
+.portfolio-images{
+	li img{
+		width: 100%;
+		margin-top: 20px;
+	}
 }
 a.back-link {
     padding: 5px 20px 8px;

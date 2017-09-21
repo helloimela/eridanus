@@ -48,6 +48,7 @@ app.controller('HomeCtrl', ['$http','$location','$scope',function($http, $locati
      // $scope.showModal=true;
      // $scope.paramdata = pttarget;
      $scope.activeMenu = pttarget.id;
+     console.log(pttarget.id);
      $scope.pageStat='pageFade';
      $location.path('/portfolio/'+pttarget.id);
   };
@@ -60,7 +61,10 @@ app.controller('AboutCtrl', ['$http','$scope',function($http, $scope, $rootScope
 app.controller('PortItemCtrl', ['$scope','$http','$routeParams',function ($scope, $http, $routeParams ) {
   $scope.name = 'PortItemCtrl';
     $http.get('js/portfolioData.json').then(function(data){
-        $scope.itemDetail = data.data[$routeParams.itemId];
+        $scope.totalnum=data.data.length;
+        $scope.trueID=$scope.totalnum-$routeParams.itemId-1;
+        $scope.itemDetail = data.data[$scope.trueID];
+        console.log(data);
     });
     $scope.$back = function() { 
       window.history.back();
