@@ -38,7 +38,7 @@ app.controller('MainCtrl', ['$sce','$http','$scope','$location','$rootScope',fun
 }]);
 
 app.controller('HomeCtrl', ['$http','$location','$scope',function($http, $location, $scope, $rootScope){
-	$http.get('/dist/js/portfolioData.json').then(function(data){
+	$http.get('js/portfolioData.json').then(function(data){
       $scope.items = data.data;
   });
   $scope.pageClass = 'home-anim';
@@ -59,7 +59,7 @@ app.controller('AboutCtrl', ['$http','$scope',function($http, $scope, $rootScope
 
 app.controller('PortItemCtrl', ['$scope','$http','$routeParams',function ($scope, $http, $routeParams ) {
   $scope.name = 'PortItemCtrl';
-    $http.get('/dist/js/portfolioData.json').then(function(data){
+    $http.get('js/portfolioData.json').then(function(data){
         $scope.itemDetail = data.data[$routeParams.itemId];
     });
     $scope.$back = function() { 

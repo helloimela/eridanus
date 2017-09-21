@@ -15,7 +15,10 @@ var bower = require('gulp-bower');
 var bowerSrc = require('gulp-bower-src');
 var gulpFilter = require('gulp-filter');
 var del = require('del');
-var image = require('gulp-image');
+var image = require('gulp-image'),
+    browserSync     = require('browser-sync'),
+    reload          = browserSync.reload,
+    $               = require('gulp-load-plugins')();
 
 var config = {
      bowerDir: 'dev/js/vendor' 

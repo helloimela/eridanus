@@ -72,6 +72,12 @@ html,body, body>div, .container{
 	height: 100%;
 	overflow: hidden;
 	color: $gray-dark;
+	position: relative;
+}
+body>div{
+	@media (max-width: $screen-sm-min) {
+	    overflow: auto;
+	  }
 }
 a{cursor: pointer;}
 // Home Page bg color
@@ -102,11 +108,9 @@ a{cursor: pointer;}
 	svg{overflow: hidden;}
 	#ela-logo{fill:#fff;}
 }
-#image-cover image{
-	@include transition(1s transform);
-	@include transform(rotate(0deg) scale(1));
-	@include transform-origin(50%,50%,0);
-	animation : logoAnim 10s infinite;
+#image-cover, #ellipse-mask{
+	clip-path: url(#ela-logo);
+  -webkit-clip-path: url(#ela-logo);
 }
 #ellipse-mask{
 	fill:#FF7BAC;
@@ -168,7 +172,7 @@ a{cursor: pointer;}
 }
 .pt-big-wp{
     position: fixed;
-    transform: translate(-50%,0);
+    @include transform(translate(-50%,0));
     left: 50%;
     width: 103%;
     height: 100%;
@@ -180,12 +184,19 @@ a{cursor: pointer;}
     	height: 100%;
     	padding-bottom: 40px;
     }
+    .back-link-wp{text-align: right;}
+    @media (max-width: $screen-sm-min) {
+        margin-top:60px;
+        .pt-title{margin-top:0px;}
+        .back-link-wp{text-align: left;}
+      }
 }
 a.back-link {
     padding: 5px 20px 8px;
     background: $brand-primary;
     color: #fff;
     margin: 20px 0 0;
+    display: inline-block;
 }
 .bg-white{background: #fff;}
 // .pageFade{
@@ -261,6 +272,9 @@ a.back-link {
 		}
 		.mline.short{opacity: 0;}
 	}
+	@media (max-width: $screen-sm-min) {
+	    top: 80px;
+	  }
 }
 
 .pp{
@@ -410,24 +424,24 @@ a.back-link {
 	to	{opacity: 1; @include transform(scale(1));}
 }
 @keyframes slideInUp {
-	from 	{ transform:translateY(100%); opacity: 0;}
-	to 		{ transform: translateY(0); opacity: 1;}
+	from 	{ @include transform(translateY(100%)); opacity: 0;}
+	to 		{ @include transform(translateY(0)); opacity: 1;}
 }
 @keyframes slideInDownPT {
-	from 	{ transform:translate(-50%,-100%); opacity: 0;}
-	to 		{ transform: translate(-50%,0); opacity: 1;}
+	from 	{ @include transform(translate(-50%,-100%)); opacity: 0;}
+	to 		{ @include transform(translate(-50%,0)); opacity: 1;}
 }
 @keyframes slideOutDownPT {
-	from	{transform: translate(-50%,0); opacity: 1;}
-	to 		{ transform:translate(-50%,-100%); opacity: 0;}
+	from	{@include transform(translate(-50%,0)); opacity: 1;}
+	to 		{ @include transform(translate(-50%,-100%)); opacity: 0;}
 }
 @keyframes slideOutLeft {
 	from	{opacity: 1;}
-	to 		{ transform: translateX(-100%); opacity: 0;}
+	to 		{@include transform(translateX(-100%)); opacity: 0;}
 }
 @keyframes slideOutDown {
 	from	{opacity: 1;}
-	to 		{ transform: translateY(100%); opacity: 0;}
+	to 		{ @include transform(translateY(100%)); opacity: 0;}
 }
 
 @keyframes slideInRight {
